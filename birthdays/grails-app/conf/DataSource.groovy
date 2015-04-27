@@ -1,7 +1,7 @@
 dataSource {
     pooled = true
     jmxExport = true
-    driverClassName = ".Driver"
+    driverClassName = "org.h2.Driver"
     username = "sa"
     password = ""
 }
