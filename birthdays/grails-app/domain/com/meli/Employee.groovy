@@ -15,6 +15,9 @@ class Employee {
     }
 
     void addGift(Gift gift) {
+        if(this.gifts.any { g -> gift.year == g.year}) {
+            throw new Exception()
+        }
     	this.gifts.add(gift)
     }
 

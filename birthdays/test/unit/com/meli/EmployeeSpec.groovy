@@ -35,16 +35,15 @@ class EmployeeSpec extends Specification {
     		!employee.hasCurrentGift()
     }
 
-    void "deberiaCrearUnEmpleadoConDosRegalos"(){
+    void "deberiaCrearUnEmpleadoConDosRegalos"() {
         when: "Creo un empleado con un regalo"
             def employee = new Employee()
-            def currentYear = new Date()[Calendar.YEAR] - 1
-            def lastYear = new Date()[Calendar.YEAR] - 2
+            def currentYear = new Date()[Calendar.YEAR]
+            def lastYear = new Date()[Calendar.YEAR] - 1
             employee.addGift(new Gift(year: lastYear))
             employee.addGift(new Gift(year: currentYear))
         then: "El empleado debería tener dos regalos"
             employee.gifts.size() == 2
-            
     }
 
     void "deberiaCrearUnEmpleadoConUnRegaloParaAñoActual"(){
@@ -54,7 +53,6 @@ class EmployeeSpec extends Specification {
             employee.addGift(gift)
         then: "El empleado debería tener un regalo correspondiente al año actual"
             employee.hasCurrentGift()
-
     }
 
     void "deberiaCrearUnEmpleadoConUnRegaloParaAñoAnterior"(){
@@ -65,6 +63,30 @@ class EmployeeSpec extends Specification {
             employee.addGift(gift)
         then: "El empleado debería tener un regalo correspondiente al año anterior"
             !employee.hasCurrentGift()
+    }
 
+    void "deberiaDarErrorAlCrearUnEmpleadoConDosRegalosParaElMismoAño"(){
+        when: "Creo un empleado con un regalo"
+            def employee = new Employee()
+            def year = new Date()[Calendar.YEAR]
+            def gift1 = new Gift(year: year)
+            def gift2 = new Gift(year: year)
+            employee.addGift(gift1)
+            employee.addGift(gift2)
+        then: "Deberia dar error"
+            thrown Exception
+    }
+
+    void "deberiaDarErrorAlAsignarUnRegaloParaUnCumpleañosPasado"() {
+        when: "Creo un empleado y le asigno un regalo con el año anterior a la fecha del cumpleaños"
+            def date = new GregorianCalendar(2015, Calendar.MAY, 17).time
+            //date.
+            def employee = new Employee(birthday: date)
+
+            def year = new Date()[Calendar.YEAR] - 1
+            def gift = new Gift(year: year)
+            employee.addGift(gift)
+        then: "Deberia dar un error "
+            thrown Exception
     }
 }
