@@ -7,4 +7,4 @@
 +
 +Además quieren poder entrar a una página web y ver e la página web al lista de todos los cumpleañeros del mes actual y el regalo que tienen asignado.
 +
-+Finalmente, por motivos historicos, debe haber una forma de consultar que regalos se le hicieron a un empleado los años anteriores.
++Finalmente, por motivos historicos, debe haber una forma de consultar que regalos se le hicieron a un empleado los años anteriores.estoy
