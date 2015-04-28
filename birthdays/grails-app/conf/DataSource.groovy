@@ -9,8 +9,8 @@
 dataSource {
   pooled = true
   jmxExport = true
-  driverClassName = "com.mysql.jdbc.Driver"
-  dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
+  driverClassName = "com.mysql.jdbc.DriverXXXXXX"
+  dialect = "org.hibernate.dialect.MySQL5InnoDBDialectXXXXXX"
 }
 
 hibernate {
@@ -27,15 +27,17 @@ environments {
     development {
         dataSource {
           dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
-          url = "jdbc:mysql://localhost/birthday_dev?useUnicode=yes&characteEncoding=UTF-8"
-          username = "root"
+          url = "jdbc:mysql://localhost/XXXXXX?useUnicode=yes&charaterEncoding=UTF-8"
+          username = "XXXXXX"
+          password = "XXXXXX"
         }
     }
     test {
         dataSource {
           dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
-          url = "jdbc:mysql://localhost/birthday_dev?useUnicode=yes&characteEncoding=UTF-8"
-          username = "root"
+          url = "jdbc:mysql://localhost/XXXXXX?useUnicode=yes&charaterEncoding=UTF-8"
+          username = "XXXXXX"
+          password = "XXXXXX"
         }
     }
     production {
