@@ -3,6 +3,7 @@ package com.meli
 class Employee {
 
 	String name
+    String lastName
 	Date birthday
 	def gifts = []
 
