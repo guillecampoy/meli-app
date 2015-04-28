@@ -9,6 +9,8 @@ import spock.lang.Specification
 @TestFor(Employee)
 class EmployeeSpec extends Specification {
 
+    def employeeService
+
     def setup() {
     }
 
@@ -77,16 +79,4 @@ class EmployeeSpec extends Specification {
             thrown Exception
     }
 
-    void "deberiaDarErrorAlAsignarUnRegaloParaUnCumpleañosPasado"() {
-        when: "Creo un empleado y le asigno un regalo con el año anterior a la fecha del cumpleaños"
-            def date = new GregorianCalendar(2015, Calendar.MAY, 17).time
-            //date.
-            def employee = new Employee(birthday: date)
-
-            def year = new Date()[Calendar.YEAR] - 1
-            def gift = new Gift(year: year)
-            employee.addGift(gift)
-        then: "Deberia dar un error "
-            thrown Exception
-    }
 }
