@@ -10,7 +10,7 @@ class EmployeeController {
 
     def listAllWithBirtdayInCurrentMonth() {
     	def results = employeeService.getAllEmployeeByBirthdayMonth(getCurrentMonth())
-    	return new ModelAndView("index", [employeeList : results])
+    	return new ModelAndView("listAllWithBirtdayInCurrentMonth", [employeeList : results])
     }
 
     private Integer getCurrentMonth(){
@@ -19,8 +19,12 @@ class EmployeeController {
 		nowDate[Calendar.MONTH] + 1
     }
 
-    def listEmployeeHistorical(){
 
+    def listEmployeeHistoricalGifts() {
+        def idEmployee = params.idEmployee
+        Employee employee = Employee.findById(idEmployee)
+        def gifts = employee.gifts
+        return new ModelAndView("historicalGifts", [gifts : gifts])
     }
 
 	//    def index() { } 
