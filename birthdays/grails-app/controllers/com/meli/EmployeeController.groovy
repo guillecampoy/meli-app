@@ -22,4 +22,7 @@ class EmployeeController {
     def listEmployeeHistorical(){
 
     }
+
+	//    def index() { } 
+
 }
