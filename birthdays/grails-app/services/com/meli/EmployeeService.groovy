@@ -12,5 +12,7 @@ class EmployeeService {
     	query.list()
     }
 
-
+    List listEmployeeHistorical(Long id) {
+    	
+    }
 }

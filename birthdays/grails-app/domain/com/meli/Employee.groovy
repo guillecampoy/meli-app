@@ -5,7 +5,8 @@ class Employee {
 	String name
     String lastName
 	Date birthday
-	def gifts = []
+
+	static hasMany = [gifts:Gift]
 
     static constraints = {
     }
@@ -23,6 +24,6 @@ class Employee {
     }
 
     String toString() {
-    	name + " " + birthday
+    	name + " " + lastName + " " + birthday
     }
 }
