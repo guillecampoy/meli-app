@@ -19,6 +19,12 @@ class EmployeeController {
 		nowDate[Calendar.MONTH] + 1
     }
 
+    private Integer getCurrentYear(){
+        def nowCalendar = Calendar.instance
+        Date nowDate = nowCalendar.time
+        nowDate[Calendar.YEAR]
+    }
+
 
     def listEmployeeHistoricalGifts() {
         def idEmployee = params.idEmployee
@@ -27,6 +33,13 @@ class EmployeeController {
         return new ModelAndView("historicalGifts", [gifts : gifts])
     }
 
-	//    def index() { } 
+    def setGiftForEmployee() { 
+        def idItem = params.idGift
+        def idEmployee = params.idEmployee
+        Employee employee = Employee.findById(idEmployee)
+        Gift gift = new Gift(idItem: idItem, year: getCurrentYear())
+        employee.addGift(gift)
+        employee.save()
+    }
 
 }

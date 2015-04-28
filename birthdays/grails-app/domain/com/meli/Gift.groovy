@@ -3,10 +3,10 @@ package com.meli
 class Gift {
 
 	Integer year
-	String id_MeLi
+	String idItem
 
     static constraints = {
     	year nullable: false
-    	id_MeLi nullable: false, unique: true
+    	idItem nullable: false, unique: true
     }
 }
