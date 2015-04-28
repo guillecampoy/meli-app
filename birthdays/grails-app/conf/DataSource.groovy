@@ -29,6 +29,7 @@ environments {
           dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
           url = "jdbc:mysql://localhost/birthday_dev?useUnicode=yes&characteEncoding=UTF-8"
           username = "root"
+        }
     }
     test {
         dataSource {
