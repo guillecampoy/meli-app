@@ -4,5 +4,5 @@ class EmployeeController {
 
 	static scaffold = true
     
-    def index() { }
+	//    def index() { } 
 }
