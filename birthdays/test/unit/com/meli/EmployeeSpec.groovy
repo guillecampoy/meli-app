@@ -4,6 +4,7 @@ import grails.test.mixin.TestFor
 import grails.test.mixin.Mock
 import spock.lang.Specification
 
+
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
@@ -46,11 +47,9 @@ class EmployeeSpec extends Specification {
             def lastYear = new Date()[Calendar.YEAR] - 1
             def gift1 = new Gift(idItem: 1, year: lastYear)
             def gift2 = new Gift(idItem: 1, year: currentYear)
-        println 'cuatro'
             //employee.addGift(gift1)
-            employee.addToGifts(gift1)
-        println 'cinco'
-            employee.addToGifts(gift2)
+            employee.addGift(gift1)
+            employee.addGift(gift2)
         then: "El empleado debería tener dos regalos"
             employee.gifts.size() == 2
     }
@@ -59,7 +58,7 @@ class EmployeeSpec extends Specification {
         when: "Creo un empleado con un regalo para el año actual"
             def employee = new Employee()
             def gift = new Gift(year: new Date()[Calendar.YEAR])
-            employee.addToGifts(gift)
+            employee.addGift(gift)
         then: "El empleado debería tener un regalo correspondiente al año actual"
             employee.hasCurrentGift()
     }
@@ -69,10 +68,11 @@ class EmployeeSpec extends Specification {
             def employee = new Employee()
             def year = new Date()[Calendar.YEAR] - 1
             def gift = new Gift(year: year)
-            employee.addToGifts(gift)
+            employee.addGift(gift)
         then: "El empleado debería tener un regalo correspondiente al año anterior"
             !employee.hasCurrentGift()
     }
+
 
     void "deberiaDarErrorAlCrearUnEmpleadoConDosRegalosParaElMismoAño"(){
         when: "Creo un empleado con un regalo"
@@ -83,7 +83,7 @@ class EmployeeSpec extends Specification {
             employee.addGift(gift1)
             employee.addGift(gift2)
         then: "Deberia dar error"
-            thrown Exception
+            thrown BirthdayException
     }
 
 }

@@ -1,10 +1,14 @@
 package com.meli
 
+import java.text.SimpleDateFormat
+
 class Employee {
 
 	String name
     String lastName
 	Date birthday
+
+    static final dateFormat = new SimpleDateFormat("dd-MM-yyyy")
 
 	static hasMany = [gifts:Gift]
 
@@ -18,12 +22,14 @@ class Employee {
 
     void addGift(Gift gift) {
         if(this.gifts.any { g -> gift.year == g.year}) {
-            throw new Exception()
+            throw new BirthdayException()
         }
-    	this.gifts.add(gift)
+
+    	//this.gifts.add(gift) // Esta linea no funciona debido a como esta mapeada la entidad
+        addToGifts(gift)
     }
 
     String toString() {
-    	name + " " + lastName + " " + birthday
+    	name + " " + lastName + " " + dateFormat.format(birthday)
     }
 }
