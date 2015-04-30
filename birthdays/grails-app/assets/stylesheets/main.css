@@ -594,3 +594,39 @@ a.skip {
 	position: absolute;
 	left: -9999px;
 }
+
+/*#result-conteiner{
+	background-color: #FFFFCC;
+	border-radius: 6px; 
+	overflow: hidden;
+	width: 400px; 
+	height: 500px; 
+	overflow-y: scroll;
+}
+
+.title{
+    margin: 0;
+ 		padding: 0;
+	
+}
+
+.row{
+	border: 1px solid grey;
+	border-radius: 4px;
+	margin: 2px;
+}
+
+.item-image{
+	border-radius: 4px;
+	margin-left: 2px;
+	margin-top: 2px;
+}
+
+#input-div{
+	float: left;
+}
+
+#main{
+	width: 500px;
+}
+*/

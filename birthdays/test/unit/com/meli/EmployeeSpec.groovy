@@ -1,12 +1,15 @@
 package com.meli
 
 import grails.test.mixin.TestFor
+import grails.test.mixin.Mock
 import spock.lang.Specification
+
 
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
 @TestFor(Employee)
+@Mock(Gift)
 class EmployeeSpec extends Specification {
 
     def employeeService
@@ -39,11 +42,14 @@ class EmployeeSpec extends Specification {
 
     void "deberiaCrearUnEmpleadoConDosRegalos"() {
         when: "Creo un empleado con un regalo"
-            def employee = new Employee()
+            def employee = new Employee(name: "Juan", lastName: "Peres")
             def currentYear = new Date()[Calendar.YEAR]
             def lastYear = new Date()[Calendar.YEAR] - 1
-            employee.addGift(new Gift(year: lastYear))
-            employee.addGift(new Gift(year: currentYear))
+            def gift1 = new Gift(idItem: 1, year: lastYear)
+            def gift2 = new Gift(idItem: 1, year: currentYear)
+            //employee.addGift(gift1)
+            employee.addGift(gift1)
+            employee.addGift(gift2)
         then: "El empleado debería tener dos regalos"
             employee.gifts.size() == 2
     }
@@ -67,6 +73,7 @@ class EmployeeSpec extends Specification {
             !employee.hasCurrentGift()
     }
 
+
     void "deberiaDarErrorAlCrearUnEmpleadoConDosRegalosParaElMismoAño"(){
         when: "Creo un empleado con un regalo"
             def employee = new Employee()
@@ -76,7 +83,7 @@ class EmployeeSpec extends Specification {
             employee.addGift(gift1)
             employee.addGift(gift2)
         then: "Deberia dar error"
-            thrown Exception
+            thrown BirthdayException
     }
 
 }

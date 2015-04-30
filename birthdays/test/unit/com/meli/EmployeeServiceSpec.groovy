@@ -1,6 +1,7 @@
 package com.meli
 
 import grails.test.mixin.TestFor
+import grails.test.mixin.Mock
 import spock.lang.Specification
 
 /**
@@ -8,6 +9,7 @@ import spock.lang.Specification
  */
 
 @TestFor(EmployeeService)
+@Mock(Employee)
 class EmployeeServiceSpec extends Specification {
 
     def setup() {
@@ -16,12 +18,12 @@ class EmployeeServiceSpec extends Specification {
     def cleanup() {
     }
 
-    void "test something"() {
+    void "deberiaRecuperarLosEmpleadosQueCumplenAñosEnOctubre"() {
     	
     	when: ""
-    	def employee1 = new Employee(name: "Employee1", birthday: new GregorianCalendar(1989, Calendar.MAY, 17).time)
-    	def employee2 = new Employee(name: "Employee2", birthday: new GregorianCalendar(1983, Calendar.OCTOBER, 7).time)
-    	def employee3 = new Employee(name: "Employee3", birthday: new GregorianCalendar(1979, Calendar.OCTOBER, 8).time)
+    	def employee1 = new Employee(name: "Employee1", lastName: "L1", birthday: new GregorianCalendar(1989, Calendar.MAY, 17).time)
+    	def employee2 = new Employee(name: "Employee2", lastName: "L2", birthday: new GregorianCalendar(1983, Calendar.OCTOBER, 7).time)
+    	def employee3 = new Employee(name: "Employee3", lastName: "L3", birthday: new GregorianCalendar(1979, Calendar.OCTOBER, 8).time)
 		employee1.save()
 		employee2.save()
 		employee3.save()
