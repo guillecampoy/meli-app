@@ -1,12 +1,14 @@
 package com.meli
 
 import grails.test.mixin.TestFor
+import grails.test.mixin.Mock
 import spock.lang.Specification
 
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
 @TestFor(Employee)
+@Mock(Gift)
 class EmployeeSpec extends Specification {
 
     def employeeService
@@ -39,11 +41,16 @@ class EmployeeSpec extends Specification {
 
     void "deberiaCrearUnEmpleadoConDosRegalos"() {
         when: "Creo un empleado con un regalo"
-            def employee = new Employee()
+            def employee = new Employee(name: "Juan", lastName: "Peres")
             def currentYear = new Date()[Calendar.YEAR]
             def lastYear = new Date()[Calendar.YEAR] - 1
-            employee.addGift(new Gift(year: lastYear))
-            employee.addGift(new Gift(year: currentYear))
+            def gift1 = new Gift(idItem: 1, year: lastYear)
+            def gift2 = new Gift(idItem: 1, year: currentYear)
+        println 'cuatro'
+            //employee.addGift(gift1)
+            employee.addToGifts(gift1)
+        println 'cinco'
+            employee.addToGifts(gift2)
         then: "El empleado debería tener dos regalos"
             employee.gifts.size() == 2
     }
@@ -52,7 +59,7 @@ class EmployeeSpec extends Specification {
         when: "Creo un empleado con un regalo para el año actual"
             def employee = new Employee()
             def gift = new Gift(year: new Date()[Calendar.YEAR])
-            employee.addGift(gift)
+            employee.addToGifts(gift)
         then: "El empleado debería tener un regalo correspondiente al año actual"
             employee.hasCurrentGift()
     }
@@ -62,7 +69,7 @@ class EmployeeSpec extends Specification {
             def employee = new Employee()
             def year = new Date()[Calendar.YEAR] - 1
             def gift = new Gift(year: year)
-            employee.addGift(gift)
+            employee.addToGifts(gift)
         then: "El empleado debería tener un regalo correspondiente al año anterior"
             !employee.hasCurrentGift()
     }
