@@ -61,6 +61,9 @@ function search(){
 					animateResult();
 				}
 		}
+
+		$("#result-conteiner").empty();
+		$("#result-conteiner").append("<img class='ajax-loader' src='/birthdays/assets/ajax-loader.gif'>");
 		
 		var url_meli = "https://api.mercadolibre.com/sites/MLA/search?q=" + _this.value;
 		var promise = $.get(url_meli);
@@ -82,9 +85,19 @@ function animateResult(){
 
 function processResult(data){
 	$("#result-conteiner").empty();
-	console.log(data.results.length);
-	data.results.forEach(function(item){
-		var div_item = "<div class='row' id='"+item.id+"'>"+"<img class='item-image' src='"+item.thumbnail+"'/>"+ "<p class='title'>"+item.title+"</p>" +"</div>"
+	// console.log(data.results.length);
+
+	if (!data.results.length){
+		$("#result-conteiner").append("<p class='no-result'> No hay resultados </p>");
+	};
+
+	data.results.forEach(function(item, index){
+		var div_item;
+		if(index % 2){
+			div_item = "<div class='row white-search' id='"+item.id+"'>"+"<img class='item-image' src='"+item.thumbnail+"'/>"+ "<p class='title'>"+item.title+"</p>" +"</div>"
+		} else {
+			div_item = "<div class='row grey-search' id='"+item.id+"'>"+"<img class='item-image' src='"+item.thumbnail+"'/>"+ "<p class='title'>"+item.title+"</p>" +"</div>"	
+		}
 		$("#result-conteiner").append(div_item);
 	});
 
@@ -101,7 +114,7 @@ function processResult(data){
 
 function addGiftToEmployee(gift_div){
 
-	console.log("que esss"+gift_div);
+	// console.log("que esss"+gift_div);
 
 	// var div_item = "<div class='row' id='"+item.id+"'>"+"<img class='item-image' src='"+item.thumbnail+"'/>"+ "<p class='title'>"+item.title+"</p>" +"</div>"
 	$("#gift"+current_id).html($(gift_div).html());

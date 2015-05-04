@@ -7,9 +7,9 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title><g:layoutTitle default="Grails"/></title>
+		<title><g:layoutTitle default="Gifts"/></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="shortcut icon" href="${assetPath(src: 'favicon.ico')}" type="image/x-icon">
+		<link rel="shortcut icon" href="http://www.fancyicons.com/free-icons/147/gifts/png/256/box3_256.png" type="image/x-icon">
 		<link rel="apple-touch-icon" href="${assetPath(src: 'apple-touch-icon.png')}">
 		<link rel="apple-touch-icon" sizes="114x114" href="${assetPath(src: 'apple-touch-icon-retina.png')}">
 		<link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
@@ -19,15 +19,21 @@
 	</head>
 	<body>
 		<div id="grailsLogo" role="banner">
-				<div class="logo-div">
+				<!-- <div class="logo-div">
 					<img class="logo" src="http://www.fancyicons.com/free-icons/147/gifts/png/256/box3_256.png">
-				</div>
+				</div> -->
 				<div class="title-div">
 					<h2>GIFTS</h2>
 				</div>
 		</div>
 		<g:layoutBody/>
-		<div class="footer" role="contentinfo"></div>
+		<div class="footer" role="contentinfo">
+			<div class="powered-by">
+			Powered by 	<a href="https://github.com/alejandrolp" target="_blank" >Amendola</a> 
+						<a href="https://github.com/jbordes" target="_blank">Bordes</a> 
+						<a href="https://github.com/waltertw" target="_blank">Olivero</a>
+			</div>
+		</div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 	</body>
 </html>

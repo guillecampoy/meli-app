@@ -1,3 +1,19 @@
+/*@font-face {
+    font-family: DeliciousRoman;
+    src: url(/birthdays/assets/gift.ttf);
+    font-weight:400;
+}*/
+
+@font-face {
+    font-family: '2Peas-Gift';
+    src:url('/birthdays/assets/2Peas-Gift.ttf.woff') format('woff'),
+        url('/birthdays/assets/2Peas-Gift.ttf.svg#2Peas-Gift') format('svg'),
+        url('/birthdays/assets/2Peas-Gift.ttf.eot'),
+        url('/birthdays/assets/2Peas-Gift.ttf.eot?#iefix') format('embedded-opentype'); 
+        font-weight: normal;
+        font-style: normal;
+}
+
 #result-conteiner{
 	/*background-color: #FFFFCC;*/
 	border-radius: 6px; 
@@ -6,6 +22,12 @@
 	height: 450px; 
 	overflow-y: scroll;
 	/*visibility:hidden;*/
+}
+
+#main{
+	max-height: 510px;
+	height: 100%;
+	overflow-y: scroll;
 }
 
 .logo{
@@ -18,37 +40,62 @@
 	float: left;
 	width: 70%;
 	padding-left: 20px;
-	font-family: 'Indie Flower', cursive;
-	font-size: 5em;
+	margin-top: 25px;
+	/*font-family: 'Indie Flower', cursive;*/
+	/*font-family: DeliciousRoman, Helvetica, Arial, sans-serif;*/
+	font-family: '2Peas-Gift';
+	font-size: 64px;
 	/*color: blue;*/
-	text-shadow: 5px 5px 15px #FFF;
+	text-shadow: 15px 15px 15px #FFF;
 }
 
 #grailsLogo {
 	height: 120px;
-	background-image: url("http://sourcecodes.pro/loader/image/0-xem-s3-xem-xemoteimage-xem-com/files/60715235/Green%20Gift%20Pattern%20_pv-xem-jpgxemc.jpg?itemid=5096412&dom=sourcecodes") !important;
+	background-image: url("/birthdays/assets/gift-background.jpg") !important;
     background-repeat: repeat;
     background-size: 350px 350px;
     background-color:rgba(255,0,0,0.5);
 }
 
 .footer{
-	background-image: url("http://sourcecodes.pro/loader/image/0-xem-s3-xem-xemoteimage-xem-com/files/60715235/Green%20Gift%20Pattern%20_pv-xem-jpgxemc.jpg?itemid=5096412&dom=sourcecodes") !important;
+	background-image: url("/birthdays/assets/gift-background.jpg") !important;
     background-repeat: repeat;
     background-size: 250px 250px;
     background-color:rgba(255,0,0,0.5);
+    text-align: center;
 }
+
+.powered-by{
+	margin-top: -24px;
+}
+
+a { 
+	text-decoration:none;
+	color: #3366FF !important;
+ }
 
 .logo-div{
 	float: right;
 }
 
 .white{
-	background-color: #E1E1E1;
+	background-color: #FFF;
+	background: linear-gradient(90deg, rgb(243,243,243), rgb(255,255,255) 90%);
 }
 
 .grey{
-	background-color: #F2F2F2;
+	background-color: #FFF;
+	background: linear-gradient(270deg, rgb(243,243,243), rgb(255,255,255) 90%);
+}
+
+.white-search{
+	background-color: #FFF;
+	background: linear-gradient(90deg, rgb(240,240,240), rgb(255,255,255));
+}
+
+.grey-search{
+	background-color: #FFF;
+	background: linear-gradient(270deg, rgb(240,240,240), rgb(255,255,255) );
 }
 
 .title{
@@ -60,8 +107,8 @@
 }
 
 .row{
-	border: 1px solid grey;
-	border-radius: 4px;
+/*	border: 1px solid grey;
+	border-radius: 4px;*/
 	margin: 2px;
 }
 
@@ -115,9 +162,20 @@
 	margin-bottom: 25px;
 }
 
+.no-result{
+	text-align: center;
+}
+
 /*#search-text{
 	margin-bottom: 25px;
 }*/
+
+.ajax-loader{
+
+	height: 30px;
+    margin-left: 200px;
+    width: 30px;
+}
 
 .js-open-modal{
 	text-decoration: none;
