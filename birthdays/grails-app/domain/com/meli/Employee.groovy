@@ -30,6 +30,8 @@ class Employee {
     }
 
     String toString() {
-    	name + " " + lastName
+        if(birthday) name + " " + lastName + " " + dateFormat.format(birthday)
+        else name + " " + lastName
     }
+
 }
