@@ -114,6 +114,14 @@ function processResult(data){
 
 function addGiftToEmployee(gift_div){
 
+	var idOldGift = 1;
+
+	if (idOldGift) {
+		deleteGift(idOldGift);
+	}
+
+	postGift("1", "MLA557527433", "2015", "http://moto.mercadolibre.com.ar/MLA-557527433-honda-twister-blanca-casco-ls2-visor-claro-y-polarizado-_JM", "http://mla-s2-p.mlstatic.com/487201-MLA20291497271_042015-I.jpg")
+
 	// console.log("que esss"+gift_div);
 
 	// var div_item = "<div class='row' id='"+item.id+"'>"+"<img class='item-image' src='"+item.thumbnail+"'/>"+ "<p class='title'>"+item.title+"</p>" +"</div>"
@@ -144,4 +152,39 @@ function closePopup(){
 
 	//cuando cierra popup
 
+}
+
+
+function deleteGift(idGift){
+
+	var deleteUrl = "http://localhost:8080/birthdays/regalos/" + idGift;
+
+    	$.ajax({
+			url: deleteUrl,
+			type: 'DELETE',
+			success: function(data){console.log("Gift " + idGift + " deleted");},
+			error: function(error){console.log(error);}
+		});
+}
+
+function postGift(idEmployee, idItem, year, url, thumbnail){
+
+	var postUrl = "http://localhost:8080/birthdays/regalos?";
+
+	postUrl += "employee=" + idEmployee;
+	postUrl += "&idItem=" + idItem;
+	postUrl += "&year=" + year;
+	postUrl += "&url=" + url;
+	postUrl += "&thumbnail=" + thumbnail;
+
+		
+	var promise = $.post(postUrl);
+
+	promise.done(function processResult(data) {
+		console.log(data);
+	});
+
+	promise.fail(function processError(error) {
+		console.log(error);
+	});	
 }
