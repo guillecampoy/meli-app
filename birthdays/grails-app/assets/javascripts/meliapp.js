@@ -114,18 +114,19 @@ function processResult(data){
 
 function addGiftToEmployee(gift_div){
 
-	var idOldGift = 1;
+	var idOldGift = 9;
 
 	if (idOldGift) {
 		deleteGift(idOldGift);
 	}
 
-	postGift("1", "MLA557527433", "2015", "http://moto.mercadolibre.com.ar/MLA-557527433-honda-twister-blanca-casco-ls2-visor-claro-y-polarizado-_JM", "http://mla-s2-p.mlstatic.com/487201-MLA20291497271_042015-I.jpg")
+	postGift("1", new Date(), "2015", "http://moto.mercadolibre.com.ar/MLA-557527433-honda-twister-blanca-casco-ls2-visor-claro-y-polarizado-_JM", "http://mla-s2-p.mlstatic.com/487201-MLA20291497271_042015-I.jpg", "TITULO")
 
 	// console.log("que esss"+gift_div);
 
 	// var div_item = "<div class='row' id='"+item.id+"'>"+"<img class='item-image' src='"+item.thumbnail+"'/>"+ "<p class='title'>"+item.title+"</p>" +"</div>"
 	$("#gift"+current_id).html($(gift_div).html());
+
 
 };
 
@@ -156,8 +157,8 @@ function closePopup(){
 
 
 function deleteGift(idGift){
-
-	var deleteUrl = "http://localhost:8080/birthdays/regalos/" + idGift;
+	
+	var deleteUrl = urlGlobal+ '/' + idGift;
 
     	$.ajax({
 			url: deleteUrl,
@@ -167,18 +168,13 @@ function deleteGift(idGift){
 		});
 }
 
-function postGift(idEmployee, idItem, year, url, thumbnail){
+function postGift(idEmployee, idItem, year, url, thumbnail, title){
 
-	var postUrl = "http://localhost:8080/birthdays/regalos?";
+	var postUrl = urlGlobal;
 
-	postUrl += "employee=" + idEmployee;
-	postUrl += "&idItem=" + idItem;
-	postUrl += "&year=" + year;
-	postUrl += "&url=" + url;
-	postUrl += "&thumbnail=" + thumbnail;
+	var params = {employee: idEmployee, idItem: idItem, year: year, url: url, thumbnail: thumbnail, title: title};
 
-		
-	var promise = $.post(postUrl);
+	var promise = $.post(postUrl, params);
 
 	promise.done(function processResult(data) {
 		console.log(data);

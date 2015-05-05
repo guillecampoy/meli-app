@@ -14,7 +14,7 @@
 						</div>
 
 						<div id="input-div">
-							<button id="${employee.name}" onclick="addGift(this)" class="" data-modal-id="popup">Asignar regalo</button>
+							<button type="button" id="${employee.name}" onclick="addGift(this)" class="" data-modal-id="popup">Asignar regalo</button>
 							<!-- <div class="button">
 								<a id="link${employee.id}" class="js-open-modal" href="#" data-modal-id="popup"> Agregar Regalo </a>
 							</div> -->
