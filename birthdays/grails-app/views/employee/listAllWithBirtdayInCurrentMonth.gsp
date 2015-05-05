@@ -21,12 +21,12 @@
 						<div id="input-div">
 							<button id="${employee.name}" onclick="addGift(this, ${employee.id})" class="" data-modal-id="popup">Asignar regalo</button>
 						</div>
-						<div class="gift-div" id="gift${employee.name}" data-gift-id="algooo">
+						<div class="gift-div" id="gift${employee.name}" data-gift-id="${employee.gifts.id}">
 							<g:if test="${employee.gifts != null && !employee.gifts.isEmpty()}">
-								<img class='item-image' src="${employee.gifts.thumbnail}"/>
+								<img class='item-image' src="${employee.gifts[0].thumbnail}"/>
 							</g:if>
 							<g:if test="${employee.gifts != null && !employee.gifts.isEmpty()}">
-								<p class="title">${employee.gifts.title}</p>
+								<p class="title">${employee.gifts}</p>
 							</g:if>
 						</div>
 						</div>

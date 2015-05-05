@@ -39,7 +39,7 @@ class EmployeeController {
         Employee employee = Employee.findById(idEmployee)
         Gift gift = new Gift(idItem: idItem, year: getCurrentYear())
         employee.addGift(gift)
-        employee.save()
+        employee.save() 
     }
 
 }

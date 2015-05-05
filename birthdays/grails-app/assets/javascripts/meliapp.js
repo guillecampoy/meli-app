@@ -113,6 +113,7 @@ function processResult(data){
 
 function addGiftToEmployee(gift_div){
 
+
 	var postUrl = "http://localhost:8080/birthdays/regalos";
 
 	var gift = $(gift_div);
@@ -130,6 +131,18 @@ function addGiftToEmployee(gift_div){
 	var params = {employee: idEmployee, idItem: idItem, year: year, url: url, thumbnail: thumbnail};
 
 	var promise = $.post(postUrl, params);
+
+	var idOldGift = $("#gift"+current_id).data("gift-id");
+
+	console.log(idOldGift);
+
+	if (idOldGift == "[]") {
+		deleteGift(idOldGift);
+	}
+
+	postGift(idEmployee, idItem, year, url, thumbnail);
+
+	$("#gift"+current_id).data("gift-id", idItem);
 
 	$("#gift"+current_id).html($(gift_div).html());
 
@@ -157,4 +170,39 @@ function closePopup(){
 
 	//cuando cierra popup
 
+}
+
+
+function deleteGift(idGift){
+
+	var deleteUrl = "http://localhost:8080/birthdays/regalos/" + idGift;
+
+    	$.ajax({
+			url: deleteUrl,
+			type: 'DELETE',
+			success: function(data){console.log("Gift " + idGift + " deleted");},
+			error: function(error){console.log(error);}
+		});
+}
+
+function postGift(idEmployee, idItem, year, url, thumbnail){
+
+	var postUrl = "http://localhost:8080/birthdays/regalos?";
+
+	postUrl += "employee=" + idEmployee;
+	postUrl += "&idItem=" + idItem;
+	postUrl += "&year=" + year;
+	postUrl += "&url=" + url;
+	postUrl += "&thumbnail=" + thumbnail;
+
+		
+	var promise = $.post(postUrl);
+
+	promise.done(function processResult(data) {
+		console.log(data);
+	});
+
+	promise.fail(function processError(error) {
+		console.log(error);
+	});	
 }
