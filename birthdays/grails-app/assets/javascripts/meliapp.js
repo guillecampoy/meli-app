@@ -47,9 +47,7 @@ vacio = false;
 current_id = "";
 
 function search(){
-	// var url_meli = "https://api.mercadolibre.com/sites/MLA/search?q=" + this.value;
-	// var promise = $.get(url_meli);
-	// promise.done(processResult);
+
 	_this = this;
 	setTimeout(function() {
 		if (!_this.value == "" & vacio){
@@ -84,19 +82,20 @@ function animateResult(){
 }
 
 function processResult(data){
+
 	$("#result-conteiner").empty();
-	// console.log(data.results.length);
 
 	if (!data.results.length){
 		$("#result-conteiner").append("<p class='no-result'> No hay resultados </p>");
 	};
 
 	data.results.forEach(function(item, index){
+
 		var div_item;
 		if(index % 2){
-			div_item = "<div class='row white-search' id='"+item.id+"'>"+"<img class='item-image' src='"+item.thumbnail+"'/>"+ "<p class='title'>"+item.title+"</p>" +"</div>"
+			div_item = "<div class='row white-search' id='"+item.id+"'>"+"<img class='item-image' id='img" + item.id + "' src='"+item.thumbnail+"'/>"+ "<a id='link" + item.id + "' class='title' target='_blank' href="+ item.permalink + ">"+item.title+"</a>" + "</div>"
 		} else {
-			div_item = "<div class='row grey-search' id='"+item.id+"'>"+"<img class='item-image' src='"+item.thumbnail+"'/>"+ "<p class='title'>"+item.title+"</p>" +"</div>"	
+			div_item = "<div class='row grey-search' id='"+item.id+"'>"+"<img class='item-image' id='img" + item.id + "' src='"+item.thumbnail+"'/>"+ "<a id='link" + item.id + "' class='title' target='_blank' href="+ item.permalink + ">"+item.title+"</a>" +  "</div>"	
 		}
 		$("#result-conteiner").append(div_item);
 	});
@@ -114,25 +113,39 @@ function processResult(data){
 
 function addGiftToEmployee(gift_div){
 
-	var idOldGift = 9;
+	var postUrl = "http://localhost:8080/birthdays/regalos";
 
-	if (idOldGift) {
+	var gift = $(gift_div);
+
+	var idEmployee = current_id;
+
+	var idItem = $(gift_div).attr("id");
+
+	var url = $("#link" + idItem).attr("href");
+
+	var thumbnail = $("#img" + idItem).attr("src");
+
+	var year = new Date().getFullYear();
+
+	var title = $("#link" + idItem).html();
+
+	var idOldGift = $("#gift"+current_id).data("gift-id");
+
+	if (idOldGift == "[]") {
 		deleteGift(idOldGift);
 	}
 
-	postGift("1", new Date(), "2015", "http://moto.mercadolibre.com.ar/MLA-557527433-honda-twister-blanca-casco-ls2-visor-claro-y-polarizado-_JM", "http://mla-s2-p.mlstatic.com/487201-MLA20291497271_042015-I.jpg", "TITULO")
+	postGift(idEmployee, idItem, year, url, thumbnail, title);
 
-	// console.log("que esss"+gift_div);
+	$("#gift"+current_id).data("gift-id", idItem);
 
-	// var div_item = "<div class='row' id='"+item.id+"'>"+"<img class='item-image' src='"+item.thumbnail+"'/>"+ "<p class='title'>"+item.title+"</p>" +"</div>"
 	$("#gift"+current_id).html($(gift_div).html());
 
 
 };
 
 
-function addGift(_this){
-	// console.log("id button: " + $(_this).attr("id"));
+function addGift(_this, id){
 	current_id = $(_this).attr("id");
 	$( "#dialog" ).dialog({
       resizable: false,

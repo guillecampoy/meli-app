@@ -24,9 +24,6 @@
 	</head>
 	<body>
 		<div id="grailsLogo" role="banner">
-				<!-- <div class="logo-div">
-					<img class="logo" src="http://www.fancyicons.com/free-icons/147/gifts/png/256/box3_256.png">
-				</div> -->
 				<div class="title-div">
 					<h2>GIFTS</h2>
 				</div>
@@ -34,7 +31,7 @@
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo">
 			<div class="powered-by">
-			Powered by 	<a href="https://github.com/alejandrolp" target="_blank" >Amendola</a> 
+			Powered by 	<a href="https://github.com/alejandrolp" target="_blank">♥Amendola</a> 
 						<a href="https://github.com/jbordes" target="_blank">Bordes</a> 
 						<a href="https://github.com/waltertw" target="_blank">Olivero</a>
 			</div>
