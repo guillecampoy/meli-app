@@ -47,9 +47,7 @@ vacio = false;
 current_id = "";
 
 function search(){
-	// var url_meli = "https://api.mercadolibre.com/sites/MLA/search?q=" + this.value;
-	// var promise = $.get(url_meli);
-	// promise.done(processResult);
+
 	_this = this;
 	setTimeout(function() {
 		if (!_this.value == "" & vacio){
@@ -84,19 +82,20 @@ function animateResult(){
 }
 
 function processResult(data){
+
 	$("#result-conteiner").empty();
-	// console.log(data.results.length);
 
 	if (!data.results.length){
 		$("#result-conteiner").append("<p class='no-result'> No hay resultados </p>");
 	};
 
 	data.results.forEach(function(item, index){
+
 		var div_item;
 		if(index % 2){
-			div_item = "<div class='row white-search' id='"+item.id+"'>"+"<img class='item-image' src='"+item.thumbnail+"'/>"+ "<p class='title'>"+item.title+"</p>" +"</div>"
+			div_item = "<div class='row white-search' id='"+item.id+"'>"+"<img class='item-image' id='img" + item.id + "' src='"+item.thumbnail+"'/>"+ "<a id='link" + item.id + "' class='title' target='_blank' href="+ item.permalink + ">"+item.title+"</a>" + "</div>"
 		} else {
-			div_item = "<div class='row grey-search' id='"+item.id+"'>"+"<img class='item-image' src='"+item.thumbnail+"'/>"+ "<p class='title'>"+item.title+"</p>" +"</div>"	
+			div_item = "<div class='row grey-search' id='"+item.id+"'>"+"<img class='item-image' id='img" + item.id + "' src='"+item.thumbnail+"'/>"+ "<a id='link" + item.id + "' class='title' target='_blank' href="+ item.permalink + ">"+item.title+"</a>" +  "</div>"	
 		}
 		$("#result-conteiner").append(div_item);
 	});
@@ -114,16 +113,30 @@ function processResult(data){
 
 function addGiftToEmployee(gift_div){
 
-	// console.log("que esss"+gift_div);
+	var postUrl = "http://localhost:8080/birthdays/regalos";
 
-	// var div_item = "<div class='row' id='"+item.id+"'>"+"<img class='item-image' src='"+item.thumbnail+"'/>"+ "<p class='title'>"+item.title+"</p>" +"</div>"
+	var gift = $(gift_div);
+
+	var idEmployee = current_id;
+
+	var idItem = $(gift_div).attr("id");
+
+	var url = $("#link" + idItem).attr("href");
+
+	var thumbnail = $("#img" + idItem).attr("src");
+
+	var year = new Date().getFullYear();
+	 
+	var params = {employee: idEmployee, idItem: idItem, year: year, url: url, thumbnail: thumbnail};
+
+	var promise = $.post(postUrl, params);
+
 	$("#gift"+current_id).html($(gift_div).html());
 
 };
 
 
-function addGift(_this){
-	// console.log("id button: " + $(_this).attr("id"));
+function addGift(_this, id){
 	current_id = $(_this).attr("id");
 	$( "#dialog" ).dialog({
       resizable: false,

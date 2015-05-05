@@ -10,16 +10,26 @@
 				<g:each status="i" var="employee" in="${employeeList}">
 					<div class="main-row ${ (i % 2) == 0 ? 'grey' : 'white'}" id="row${employee.id}"> 
 						<div class="employee">
+<!-- 							<div class="employee-name">
+								${employee.name}
+							</div>
+							<div class="employee-lastname">
+								${employee.lastName}
+							</div> -->
 							${employee}
 						</div>
-
 						<div id="input-div">
-							<button id="${employee.name}" onclick="addGift(this)" class="" data-modal-id="popup">Asignar regalo</button>
-							<!-- <div class="button">
-								<a id="link${employee.id}" class="js-open-modal" href="#" data-modal-id="popup"> Agregar Regalo </a>
-							</div> -->
+							<button id="${employee.name}" onclick="addGift(this, ${employee.id})" class="" data-modal-id="popup">Asignar regalo</button>
 						</div>
-						<div class="gift-div" id="gift${employee.name}"></div>
+						<div class="gift-div" id="gift${employee.name}" data-gift-id="algooo">
+							<g:if test="${employee.gifts != null && !employee.gifts.isEmpty()}">
+								<img class='item-image' src="${employee.gifts.thumbnail}"/>
+							</g:if>
+							<g:if test="${employee.gifts != null && !employee.gifts.isEmpty()}">
+								<p class="title">${employee.gifts.title}</p>
+							</g:if>
+						</div>
+						</div>
 					</div>
 				</g:each>
 		</div>
@@ -35,4 +45,3 @@
 		</div>
 	</body>
 </html>
-

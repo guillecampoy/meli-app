@@ -1,9 +1,3 @@
-/*@font-face {
-    font-family: DeliciousRoman;
-    src: url(/birthdays/assets/gift.ttf);
-    font-weight:400;
-}*/
-
 @font-face {
     font-family: '2Peas-Gift';
     src:url('/birthdays/assets/2Peas-Gift.ttf.woff') format('woff'),
@@ -15,13 +9,11 @@
 }
 
 #result-conteiner{
-	/*background-color: #FFFFCC;*/
 	border-radius: 6px; 
 	overflow: hidden;
 	width: 100%; 
 	height: 450px; 
 	overflow-y: scroll;
-	/*visibility:hidden;*/
 }
 
 #main{
@@ -41,11 +33,8 @@
 	width: 70%;
 	padding-left: 20px;
 	margin-top: 25px;
-	/*font-family: 'Indie Flower', cursive;*/
-	/*font-family: DeliciousRoman, Helvetica, Arial, sans-serif;*/
 	font-family: '2Peas-Gift';
 	font-size: 64px;
-	/*color: blue;*/
 	text-shadow: 15px 15px 15px #FFF;
 }
 
@@ -67,6 +56,14 @@
 
 .powered-by{
 	margin-top: -24px;
+}
+
+.employee-name{
+	width: 50%;
+}
+
+.employee-lastname{
+	width: 50%;
 }
 
 a { 
@@ -103,12 +100,10 @@ a {
  	padding: 0;
  	width: 80%;
  	float: right;
-	
+ 	margin: 12px 0 0;
 }
 
 .row{
-/*	border: 1px solid grey;
-	border-radius: 4px;*/
 	margin: 2px;
 }
 
@@ -165,10 +160,6 @@ a {
 .no-result{
 	text-align: center;
 }
-
-/*#search-text{
-	margin-bottom: 25px;
-}*/
 
 .ajax-loader{
 
@@ -246,5 +237,3 @@ a.close:hover {
   -moz-transition: color 1s ease;
   transition: color 1s ease;
 }
-
-
