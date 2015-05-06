@@ -14,14 +14,14 @@
 		<g:form controller="company" action="createCompany">
 			<h1>Alta de Empresa</h1>
 			<div>
-				<input type="text" placeholder="Nombre de la Empresa" required="" id="username" />
+				<input type="text" placeholder="Nombre de la Empresa" required="" id="nombre" name="nombre"/>
 			</div>
 			<div>
-				<input type="password" placeholder="Password" required="" id="password" />
+				<input type="password" placeholder="Password" required="" id="password" name="password" />
 			</div>
 
 			<div>
-				<input type="password" placeholder="Re ingrese el Password" required="" id="password" />
+				<input type="password" placeholder="Re ingrese el Password" required="" id="password2" name="password2"/>
 			</div>
 
 			<div>

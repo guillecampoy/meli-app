@@ -3,13 +3,18 @@ package com.meli
 class CompanyController {
 
     static scaffold = true
+    CompanyService companyService
 
-    def createCompany (username, password) {
+    def createCompany () {
 
-        def company = com.meli.CompanyService.saveCompany(username, password)
+    	def username = params.nombre
+    	def password = params.password
+
+        def company = companyService.saveCompany(username, password)
 
         [company: company]
 
+        redirect(uri: "/")
     }
 
 }
