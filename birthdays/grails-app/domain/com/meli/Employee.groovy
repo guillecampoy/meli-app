@@ -7,7 +7,7 @@ class Employee {
 	String name
     String lastName
 	Date birthday
-
+    static belongsTo = [company:Company]
     static final dateFormat = new SimpleDateFormat("dd-MM-yyyy")
 
 	static hasMany = [gifts:Gift]

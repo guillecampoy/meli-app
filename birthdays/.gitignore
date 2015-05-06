@@ -1,0 +1,7 @@
+.settings
+target-eclipse
+.classpath
+.proyect
+target
+*.~
+.idea/*
