@@ -3,7 +3,9 @@ class UrlMappings {
 	static mappings = {
 
 		"/empleados"(resources: "empleado")
-        "/empleadosrest"(resources: "EmpleadoRest")
+        "/empleados/search/"(controller: "empleado" , action: "search", method: "GET")
+        "/empleados/search/${name}"(controller: "empleado" , action: "search", method: "GET")
+
         //"/regalos"(resources: "regalo")
 
 		// "/empleados" (controller: "empleado" , action: "index", method: "GET")

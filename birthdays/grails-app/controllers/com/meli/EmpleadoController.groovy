@@ -9,8 +9,9 @@ class EmpleadoController extends RestfulController {
 		super(Employee)
 	}
 
-	def search() {
-		def empleados = Employee.findAllByNameLike(params.name + "%")
+	def search(String name) {
+		def empleados = Employee.findAll()
+		//def empleados = Employee.findAllByNameLike(name)
 		//def empleados = Employee.findAllByNameLike("Carlos" + "%")
 		respond empleados
 	}
