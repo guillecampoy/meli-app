@@ -17,7 +17,8 @@ class UrlMappings {
         "/gift/show/${id}" (controller: "regalo" , action: "show", method: "GET")
         "/regalos/${id}" (controller: "regalo" , action: "delete", method: "DELETE")
 
-        "/registrarse"(view:"/company/registrarse")
+        "/registrarse"(view:"/company/gotoCreateCompany")
+        "/company/registrarse"(view:"/company/gotoCreateCompany")
 
 
         "/$controller/$action?/$id?(.$format)?"{
@@ -26,8 +27,8 @@ class UrlMappings {
             }
         }
 
-       // "/"(view:"/index")
-        "/"(view:"/company/login")
+        // "/"(view:"/index")
+        "/"(controller:"login", action:"login")
         "500"(view:'/error')
 	}
 }

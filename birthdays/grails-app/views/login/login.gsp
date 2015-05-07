@@ -8,7 +8,7 @@
 <title>Login de la Empresa</title>
 <asset:stylesheet src="application.css"/>
 </head>
-<body>
+<body onload="iniciar();">
 <div class="container">
 	<section id="content">
 		<g:form controller="company" action="loginCompany">
@@ -22,25 +22,25 @@
 			<div>
 				<input type="submit" value="Ingresa" />
 			<!--	<a href="#">Olvidaste tu password?</a>	-->
-				<a href="registrarse">Registrate</a>
+
+				<g:link controller="company" action="gotoCreateCompany">Registrarse</g:link>
 			</div>
 		</g:form><!-- form -->
 		
 	</section><!-- content -->
 </div><!-- container -->
 </body>
+
 </html>
 
 <script type="text/javascript">
 
-var val = ${valor};
+var valor = false;
 
-	$(document).ready(function() {
-		
-		if (valor) {
-			alert("Su Empresa fue creada con exito, por favor loguearse");
-		};
-		
-});
-
+function iniciar() {
+	if (${valor}) {
+		alert("Te registraste correctamente, por favor logueate");
+	}
+	
+}
 </script>

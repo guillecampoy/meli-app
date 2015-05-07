@@ -6,12 +6,19 @@ import grails.transaction.Transactional
 class CompanyService {
 
     def saveCompany(username, password) {
-        def company = new Company()
+
+         def company = new Company()
             company.nombre = username
             company.password = password
-            company.save()
 
+            if (company.validate()) {
+                company.save()
+            }
+            else {
+                return company
+                }
     }
+
 
     def loginCompany (username, password){
         def company = Company.findByNombre(nombre: username)
