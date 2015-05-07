@@ -1,5 +1,7 @@
 package com.meli
 
+import org.springframework.web.servlet.ModelAndView
+
 class CompanyController {
 
     static scaffold = true
@@ -12,8 +14,9 @@ class CompanyController {
 
         def company = companyService.saveCompany(username, password)
 
-        [company: company]
+        def valor = true
 
+      //  return new ModelAndView('/', [valor: valor] )
         redirect(uri: "/")
     }
 

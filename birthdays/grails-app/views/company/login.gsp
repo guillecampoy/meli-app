@@ -30,3 +30,17 @@
 </div><!-- container -->
 </body>
 </html>
+
+<script type="text/javascript">
+
+var val = ${valor};
+
+	$(document).ready(function() {
+		
+		if (valor) {
+			alert("Su Empresa fue creada con exito, por favor loguearse");
+		};
+		
+});
+
+</script>
