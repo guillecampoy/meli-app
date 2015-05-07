@@ -12,4 +12,21 @@ class CompanyService {
             company.save()
 
     }
+
+    def loginCompany (username, password){
+        def company = Company.findByNombre(nombre: username)
+        def logueoOk = false
+        if (company) {
+            if (company.password == password){
+                logueoOk = true
+                return logueoOk
+
+            }
+        }
+    }
+
+
+
 }
+
+
