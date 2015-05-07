@@ -17,4 +17,16 @@ class CompanyController {
         redirect(uri: "/")
     }
 
+    def loginCompany (){
+        def username = params.nombre
+        def password = params.password
+
+        def company = companyService.loginCompany(username, password)
+
+        [company:company]
+
+
+
+    }
+
 }
