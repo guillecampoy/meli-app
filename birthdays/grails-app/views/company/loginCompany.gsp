@@ -44,6 +44,10 @@
 
 <script>
 
+(function() {
+  alert('hola')
+});
+
 
 function enviar(){
 	console.log("enviar");
