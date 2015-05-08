@@ -24,15 +24,15 @@
 			<div>
 			<label>Selecciona una Empresa de la lista</label>
 				<g:select optionKey="id" optionValue="nombre"  noSelection="${['null':'Seleccione uno...']}"
-        				  name="company.nombre" from="${companies}" />
+        				  name="idCompany" from="${companies}" />
 			</div>
 
 </br>
 
 			<div>
 				<label>Selecciona un rol para el usuario</label> </br>
-				<g:select optionKey="id" optionValue="nombre"  noSelection="${['null':'Seleccione uno...']}"
-        				  name="company.nombre" from="${companies}" />
+				<!--g:select optionKey="id" optionValue="nombre"  noSelection="${['null':'Seleccione uno...']}"
+        				  name="rol" from="${companies}" /-->
 			</div>
 
 

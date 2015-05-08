@@ -14,7 +14,7 @@ class UsuarioController {
 
     def createUsuario () {
 
-    	def username = params.nombre
+    	def username = params.userName
     	def password = params.password
       def idCompany = params.idCompany
       // rol usuario
