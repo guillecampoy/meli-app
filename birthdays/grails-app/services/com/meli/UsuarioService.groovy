@@ -11,15 +11,8 @@ class UsuarioService {
             usuario.userName = username
             usuario.password = password
 
-       /*
-            def company = new Company()
-            company.id = idCompany;
-            usuario.setCompany(company)
-        */
             def company = Company.findById(idCompany)
             usuario.company = company
-       //     usuario.idCompany = idCompany
-            // rol
 
             if (true) {
                 usuario.save()
