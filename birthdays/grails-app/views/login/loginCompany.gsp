@@ -5,16 +5,16 @@
 <!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Login Usuario</title>
+<title>Login de la Empresa</title>
 <asset:stylesheet src="application.css"/>
 </head>
 <body onload="iniciar();">
 <div class="container">
 	<section id="content">
-		<g:form controller="usuario" action="loginUsuario">
-			<h1>Login Usuario</h1>
+		<g:form controller="company" action="loginCompany">
+			<h1>Login Empresa</h1>
 			<div>
-				<input type="text" placeholder="Nombre Usuario" required="" id="userName" />
+				<input type="text" placeholder="Nombre Empresa" required="" id="username" />
 			</div>
 			<div>
 				<input type="password" placeholder="Password" required="" id="password" />
@@ -23,7 +23,7 @@
 				<input type="submit" value="Ingresa" />
 			<!--	<a href="#">Olvidaste tu password?</a>	-->
 
-				<g:link controller="usuario" action="gotoCreateUsuario">Registrarse</g:link>
+				<g:link controller="company" action="gotoCreateCompany">Registrarse</g:link>
 			</div>
 		</g:form><!-- form -->
 		
