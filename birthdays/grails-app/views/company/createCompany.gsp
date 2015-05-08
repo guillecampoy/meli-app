@@ -21,14 +21,22 @@
 			</div>
 
 			<div>
-				<input type="password" placeholder="Re ingrese el Password" required="" id="password2" name="password2"/>
-			</div>
-
-			<div>
 				<input type="submit" value="Crear Empresa" />
 			</div>
 		</g:form><!-- form -->
+
+
+
+<g:hasErrors bean="${company}">
+  <ul>
+   <g:eachError var="err" bean="${company}">
+       <li><g:message error="Ya existe una empresa con ese nombre" /></li>
+   </g:eachError>
+  </ul>
+</g:hasErrors>
 		
+
+
 	</section><!-- content -->
 </div><!-- container -->
 </body>

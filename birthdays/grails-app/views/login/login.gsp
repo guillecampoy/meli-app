@@ -5,16 +5,16 @@
 <!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Login de la Empresa</title>
+<title>Login Usuario</title>
 <asset:stylesheet src="application.css"/>
 </head>
-<body>
+<body onload="iniciar();">
 <div class="container">
 	<section id="content">
-		<g:form controller="company" action="loginCompany">
-			<h1>Login Empresa</h1>
+		<g:form controller="usuario" action="loginUsuario">
+			<h1>Login Usuario</h1>
 			<div>
-				<input type="text" placeholder="Nombre Empresa" required="" id="username" />
+				<input type="text" placeholder="Nombre Usuario" required="" id="userName" />
 			</div>
 			<div>
 				<input type="password" placeholder="Password" required="" id="password" />
@@ -22,25 +22,25 @@
 			<div>
 				<input type="submit" value="Ingresa" />
 			<!--	<a href="#">Olvidaste tu password?</a>	-->
-				<a href="registrarse">Registrate</a>
+
+				<g:link controller="usuario" action="gotoCreateUsuario">Registrarse</g:link>
 			</div>
 		</g:form><!-- form -->
 		
 	</section><!-- content -->
 </div><!-- container -->
 </body>
+
 </html>
 
 <script type="text/javascript">
 
-var val = ${valor};
+var valor = false;
 
-	$(document).ready(function() {
-		
-		if (valor) {
-			alert("Su Empresa fue creada con exito, por favor loguearse");
-		};
-		
-});
-
+function iniciar() {
+	if (${valor}) {
+		alert("Te registraste correctamente, por favor logueate");
+	}
+	
+}
 </script>

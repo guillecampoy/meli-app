@@ -7,6 +7,10 @@ class CompanyController {
     static scaffold = true
     CompanyService companyService
 
+    def gotoCreateCompany(){
+		render(view: '/company/createCompany')	
+    }
+
     def createCompany () {
 
     	def username = params.nombre
@@ -14,11 +18,21 @@ class CompanyController {
 
         def company = companyService.saveCompany(username, password)
 
-        def valor = true
+        if (!company.hasErrors()) {
 
-      //  return new ModelAndView('/', [valor: valor] )
-        redirect(uri: "/")
-    }
+        	def valor = true
+       		redirect (controller: "login", action: "goToLogin")
+       	}
+       	else{
+		    render(view: '/company/createCompany', model: [company: company])
+		}
+        
+   	}
+
+   	def createCompanySuccess(){
+
+
+   	}
 
     def loginCompany (){
         def username = params.nombre
