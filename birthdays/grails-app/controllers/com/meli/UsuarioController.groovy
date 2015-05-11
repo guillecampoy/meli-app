@@ -10,8 +10,9 @@ class UsuarioController {
 
     def gotoCreateUsuario(){
     def companies = Company.findAll()   
+    def roles = Role.findAll() 
     // def roles =   
-		render(view: '/usuario/createUsuario', model: [companies: companies])	
+		render(view: '/usuario/createUsuario', model: [companies: companies, roles: roles])	
     }
 
     def createUsuario () {
@@ -19,15 +20,14 @@ class UsuarioController {
     	def username = params.userName
     	def password = params.password
       def idCompany = params.idCompany
-      // rol usuario
+      def rol       = params.rol
 
-        def usuario = usuarioService.saveUsuario(username, password, idCompany/* rol usuario*/)
+        def usuario = usuarioService.saveUsuario(username, password, idCompany, rol)
 
         if (!usuario.hasErrors()) {
 
         	def valor = true
-       		redirect (controller: "login", action: "goToLogin")
-       	}
+       		redirect (controller: "login", action: "goToLogin")       	}
        	else{
 		    render(view: '/usuario/createUsuario', model: [usuario: usuario])
 		}
