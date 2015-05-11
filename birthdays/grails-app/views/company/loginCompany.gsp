@@ -42,6 +42,10 @@
 
 <script>
 
+(function() {
+  alert('hola')
+});
+
 
 function enviar(){
 	console.log("enviar");
@@ -60,7 +64,7 @@ function enviar(){
 
 			$("#contenedor").empty();
 			data.forEach(function(item) {
-				str = item.name + " " + item.lastname + " " + "<br>";
+				str = item.name + " " + item.lastName + " " + "<br>";
 				$("#contenedor").append(str);
 			})
 	});

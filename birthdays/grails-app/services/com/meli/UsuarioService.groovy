@@ -11,12 +11,17 @@ class UsuarioService {
             usuario.userName = username
             usuario.password = password
 
+<<<<<<< HEAD
        
             def company = Company.findById(idCompany)
             usuario.company = company
        	    
             def rolseleccionado = Role.findById(rol)
             usuario.role = rolseleccionado
+=======
+            def company = Company.findById(idCompany)
+            usuario.company = company
+>>>>>>> df5c7a635606239398f7a19ebabffde6131bae21
 
             if (true) {
                 usuario.save()
