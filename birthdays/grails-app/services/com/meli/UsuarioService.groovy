@@ -24,11 +24,14 @@ class UsuarioService {
 
 
     def loginUsuario (userName, password){
-        def usuario = Usuario.findByUserName(userName: userName)
+
+        def usuario = Usuario.findByUserName(userName)
+
         def logueoOk = false
         if (usuario) {
             if (usuario.password == password){
                 logueoOk = true
+
                 return logueoOk
 
             }

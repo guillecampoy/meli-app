@@ -1,42 +1,59 @@
+<html lang="en">
+
 <head>
 <asset:javascript src="application.js"/>
+<asset:stylesheet src="application.css"/>
 </head>
 
 <body>
 
-<label>Busca Empleados por el Nombre a traves de un servicio REST</label>
-<br>
-	
-	<input type="text" id="nombre" name="nombre" value=""/> 
-	<input type="button" name="Submit" value="Buscar" onclick="enviar();"/>
+	<div class="container">
+		<section id="content">
+			<h1>Empresa: ${company.nombre}</h1>
+		</section>
+	</div>	
 
 
-<div id ="contenedor">
-</div>
-<br>
-</br>
-</br>
-</br>
-</br>
-<label>Formulario de alta por REST</label>
-	<br>
-	<br>
-	<g:form>
-		<label>Datos del empleado</label>
+
+	<div class="container">
+		<section id="content">
+			
+			<label>Nomina de empleados de la empresa:</label>
+
+			<g:each var="empleado" in="${company.employee}">
+			    <p>${empleado.name}, ${empleado.lastName}</p> 
+			</g:each>
+
+		</section>
+	</div>	
+
+	<div class="container">
+		<section id="content">
+
+
+		<label>Formulario de alta por REST</label>
 		<br>
 		<br>
-		<label>Nombre:</label>
-		<g:field type="text" name="name"/>
-		<br>
-		<label>Apellido:</label>
-		<g:field type="text" name="lastname"/>
-		<br>
-		<label>Fecha de nacimiento</label>
-		<g:datePicker precision="day" name="birthday"/>
-		<br>
-		<br>
-		<g:field type="submit" name="confirmar" value="Guardar" onclick="guardar();"/>
-	</g:form>
+		<g:form>
+			<label>Datos del empleado</label>
+			<br>
+			<br>
+			<label>Nombre:</label>
+			<g:field type="text" name="name"/>
+			<br>
+			<label>Apellido:</label>
+			<g:field type="text" name="lastname"/>
+			<br>
+			<label>Fecha de nacimiento</label>
+			<g:datePicker precision="day" name="birthday"/>
+			<br>
+			<br>
+			<g:field type="submit" name="confirmar" value="Guardar" onclick="guardar();"/>
+		</g:form>
+
+		</section>
+	</div>	
+
 </body>
 
 

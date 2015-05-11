@@ -6,6 +6,8 @@ class UsuarioController {
 
     UsuarioService usuarioService
 
+    static allowedMethods = [loginUsuario: "POST"]
+
     def gotoCreateUsuario(){
     def companies = Company.findAll()   
     // def roles =   
@@ -37,16 +39,25 @@ class UsuarioController {
 
    	}
 
-    def loginUsuario (){
+    def loginUsuario () {
         def username = params.userName
         def password = params.password
 
-        def usuario = usuarioService.loginUsuario(username, password)
+        def user
+        def company
+      
+        def usuarioOK = usuarioService.loginUsuario(username, password)
 
-        [usuario:usuario]
+        if (usuarioOK) {
+          user = Usuario.findByUserName(username)
+          company = user.getCompany()
+          [usuario:user ,company:company]
 
+        }else{
+          redirect (controller: "login", action: "goToLoginFalse")
+          }
 
-
+        
     }
 
 }

@@ -14,13 +14,13 @@
 		<g:form controller="usuario" action="loginUsuario">
 			<h1>Login Usuario</h1>
 			<div>
-				<input type="text" placeholder="Nombre Usuario" required="" id="userName" />
+				<g:field name="userName" type="text" placeholder="Nombre Usuario" required="" id="userName" />
 			</div>
 			<div>
-				<input type="password" placeholder="Password" required="" id="password" />
+				<g:field name="password" type="password" placeholder="Password" required="" id="password" />
 			</div>
 			<div>
-				<input type="submit" value="Ingresa" />
+				<input type="submit" value="submit"></input>
 			<!--	<a href="#">Olvidaste tu password?</a>	-->
 
 				<g:link controller="usuario" action="gotoCreateUsuario">Registrarse</g:link>
@@ -40,7 +40,8 @@ var valor = false;
 function iniciar() {
 	if (${valor}) {
 		alert("Te registraste correctamente, por favor logueate");
+	} else{
+	alert("Te logueaste incorrectamente")
 	}
-	
 }
 </script>

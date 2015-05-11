@@ -13,8 +13,7 @@ class LoginController {
 		
 	}
 
-	def goToLogin(){
-		return new ModelAndView("login", [ valor : true ])
+	def goToLoginFalse(){
+		return new ModelAndView("login", [ valor : false ])
 	}
-
 }
