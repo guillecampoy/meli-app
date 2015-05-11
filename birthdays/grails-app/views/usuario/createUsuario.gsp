@@ -31,8 +31,8 @@
 
 			<div>
 				<label>Selecciona un rol para el usuario</label> </br>
-				<!--g:select optionKey="id" optionValue="nombre"  noSelection="${['null':'Seleccione uno...']}"
-        				  name="rol" from="${companies}" /-->
+				<g:select optionKey="id" optionValue="tipo"  noSelection="${['null':'Seleccione uno...']}"
+        				  name="rol" from="${roles}" />
 			</div>
 
 

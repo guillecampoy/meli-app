@@ -5,21 +5,18 @@ import grails.transaction.Transactional
 @Transactional
 class UsuarioService {
 
-    def saveUsuario(username, password, idCompany /*rol*/) {
+    def saveUsuario(username, password, idCompany, rol) {
 
          def usuario = new Usuario()
             usuario.userName = username
             usuario.password = password
 
-       /*
-            def company = new Company()
-            company.id = idCompany;
-            usuario.setCompany(company)
-        */
+       
             def company = Company.findById(idCompany)
             usuario.company = company
-       //     usuario.idCompany = idCompany
-            // rol
+       	    
+            def rolseleccionado = Role.findById(rol)
+            usuario.role = rolseleccionado
 
             if (true) {
                 usuario.save()

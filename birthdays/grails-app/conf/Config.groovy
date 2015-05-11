@@ -1,3 +1,6 @@
+import grails.plugin.springsecurity.*
+
+
 // locations to search for config files that get merged into the main config;
 // config files can be ConfigSlurper scripts, Java properties files, or classes
 // in the classpath in ConfigSlurper format
@@ -119,3 +122,11 @@ log4j.main = {
 
 grails.gorm.failOnError = true
 grails.databinding.dateFormats = ['MM-dd-yyyy', 'yyyy-MM-dd HH:mm:ss.S', "yyyy-MM-dd'T'hh:mm:ss'Z'"]
+
+
+
+grails.plugin.springsecurity.securityConfigType = "InterceptUrlMap"
+grails.plugin.springsecurity.interceptUrlMap = [ 
+    '/**/**/**':               ['permitAll']
+    
+]
