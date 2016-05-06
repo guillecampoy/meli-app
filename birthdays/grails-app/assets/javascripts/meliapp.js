@@ -113,10 +113,6 @@ function processResult(data){
 
 function addGiftToEmployee(gift_div){
 
-	var postUrl = "http://localhost:8080/birthdays/regalos";
-
-	var gift = $(gift_div);
-
 	var idEmployee = current_id;
 
 	var idItem = $(gift_div).attr("id");
@@ -131,22 +127,17 @@ function addGiftToEmployee(gift_div){
 
 	var idOldGift = $("#gift"+current_id).data("gift-id");
 
-	if (idOldGift == "[]") {
+	if (idOldGift != "") {
 		deleteGift(idOldGift);
 	}
 
-	postGift(idEmployee, idItem, year, url, thumbnail, title);
-
-	$("#gift"+current_id).data("gift-id", idItem);
-
-	$("#gift"+current_id).html($(gift_div).html());
-
+	postGift(idEmployee, idItem, year, url, thumbnail, title, gift_div);
 
 };
 
 
 function addGift(_this, id){
-	current_id = $(_this).attr("id");
+	current_id = id;
 	$( "#dialog" ).dialog({
       resizable: false,
       height:140,
@@ -176,12 +167,12 @@ function deleteGift(idGift){
     	$.ajax({
 			url: deleteUrl,
 			type: 'DELETE',
-			success: function(data){console.log("Gift " + idGift + " deleted");},
+			success: function(data){console.log("Gift: " + idGift + " deleted.");},
 			error: function(error){console.log(error);}
 		});
 }
 
-function postGift(idEmployee, idItem, year, url, thumbnail, title){
+function postGift(idEmployee, idItem, year, url, thumbnail, title, gift_div){
 
 	var postUrl = urlGlobal;
 
@@ -190,10 +181,15 @@ function postGift(idEmployee, idItem, year, url, thumbnail, title){
 	var promise = $.post(postUrl, params);
 
 	promise.done(function processResult(data) {
-		console.log(data);
+		console.log("Gift: " + data.id + " posted.");
+		$("#gift"+current_id).data("gift-id", data.id);
+
+		$("#gift"+current_id).html($(gift_div).html());	
 	});
 
 	promise.fail(function processError(error) {
-		console.log(error);
-	});	
+		//console.log(error);
+	});
+
+
 }
